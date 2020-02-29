@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sarath",
+  "repository": {
+    "public": "https://github.com/sm3mb/IOT/tree/master/ICP-6/Lowercase"
+  },
   "license": "ISC"
 }
