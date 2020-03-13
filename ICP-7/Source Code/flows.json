@@ -1,0 +1,433 @@
+[
+    {
+        "id": "88ab4907.fd3708",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "39a2c05d.0808c",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5c28a671.fc6e88",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "850923d8.16d47",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3939e2de.c6ebce",
+        "type": "twitter-credentials",
+        "z": "",
+        "screen_name": "sarathrocks15"
+    },
+    {
+        "id": "e62f096.302b9f8",
+        "type": "twitter-credentials",
+        "z": "",
+        "screen_name": "aaz00966"
+    },
+    {
+        "id": "70d8639f.9a306c",
+        "type": "inject",
+        "z": "88ab4907.fd3708",
+        "name": "on",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 500,
+        "y": 240,
+        "wires": [
+            [
+                "de705846.a1f2b8"
+            ]
+        ]
+    },
+    {
+        "id": "caf26138.9a357",
+        "type": "inject",
+        "z": "88ab4907.fd3708",
+        "name": "off",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 480,
+        "y": 340,
+        "wires": [
+            [
+                "de705846.a1f2b8"
+            ]
+        ]
+    },
+    {
+        "id": "de705846.a1f2b8",
+        "type": "rpi-gpio out",
+        "z": "88ab4907.fd3708",
+        "name": "",
+        "pin": "7",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 790,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "fe912717.6173d8",
+        "type": "rpi-gpio in",
+        "z": "39a2c05d.0808c",
+        "name": "",
+        "pin": "11",
+        "intype": "tri",
+        "debounce": "0",
+        "read": true,
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "f5639b3c.94d698"
+            ]
+        ]
+    },
+    {
+        "id": "f5639b3c.94d698",
+        "type": "rpi-gpio out",
+        "z": "39a2c05d.0808c",
+        "name": "",
+        "pin": "7",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 500,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "e121aff7.001e6",
+        "type": "inject",
+        "z": "5c28a671.fc6e88",
+        "name": "",
+        "topic": "Interval",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "d117ef62.7b4f2",
+                "f09c71fc.3d753",
+                "45f8ab0a.c0c094"
+            ]
+        ]
+    },
+    {
+        "id": "341af7ab.e4b5b8",
+        "type": "function",
+        "z": "5c28a671.fc6e88",
+        "name": "",
+        "func": "context.level = !context.level || false;\nmsg.payload = context.level;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "45f8ab0a.c0c094",
+        "type": "function",
+        "z": "5c28a671.fc6e88",
+        "name": "toggle",
+        "func": "context.level = !context.level || false;\nmsg.payload = context.level;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 139,
+        "wires": [
+            [
+                "a39a2e16.d7ed1"
+            ]
+        ]
+    },
+    {
+        "id": "21ef8be1.8e06a4",
+        "type": "function",
+        "z": "5c28a671.fc6e88",
+        "name": "toggle",
+        "func": "context.level = !context.level || false;\nmsg.payload = context.level;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 200,
+        "wires": [
+            [
+                "508a4f0d.e8a08"
+            ]
+        ]
+    },
+    {
+        "id": "6cf07ca0.71d324",
+        "type": "function",
+        "z": "5c28a671.fc6e88",
+        "name": "toggle",
+        "func": "context.level = !context.level || false;\nmsg.payload = context.level;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "cce1bdd4.021c9"
+            ]
+        ]
+    },
+    {
+        "id": "d117ef62.7b4f2",
+        "type": "delay",
+        "z": "5c28a671.fc6e88",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 220,
+        "wires": [
+            [
+                "21ef8be1.8e06a4",
+                "f83e4f52.fc8fb"
+            ]
+        ]
+    },
+    {
+        "id": "f09c71fc.3d753",
+        "type": "delay",
+        "z": "5c28a671.fc6e88",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "6cf07ca0.71d324",
+                "9e47a6e4.96e5a8"
+            ]
+        ]
+    },
+    {
+        "id": "f83e4f52.fc8fb",
+        "type": "change",
+        "z": "5c28a671.fc6e88",
+        "name": "change payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 80,
+        "wires": [
+            [
+                "a39a2e16.d7ed1"
+            ]
+        ]
+    },
+    {
+        "id": "a39a2e16.d7ed1",
+        "type": "rpi-gpio out",
+        "z": "5c28a671.fc6e88",
+        "name": "",
+        "pin": "7",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 670,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "508a4f0d.e8a08",
+        "type": "rpi-gpio out",
+        "z": "5c28a671.fc6e88",
+        "name": "",
+        "pin": "8",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 660,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "cce1bdd4.021c9",
+        "type": "rpi-gpio out",
+        "z": "5c28a671.fc6e88",
+        "name": "",
+        "pin": "10",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 640,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "9e47a6e4.96e5a8",
+        "type": "change",
+        "z": "5c28a671.fc6e88",
+        "name": "change payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 380,
+        "wires": [
+            [
+                "508a4f0d.e8a08"
+            ]
+        ]
+    },
+    {
+        "id": "184456bd.d528c9",
+        "type": "debug",
+        "z": "850923d8.16d47",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 450,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "621f8ac7.fe8a94",
+        "type": "rpi-dht22",
+        "z": "850923d8.16d47",
+        "name": "",
+        "topic": "rpi-dht22",
+        "dht": 22,
+        "pintype": "0",
+        "pin": "4",
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "184456bd.d528c9",
+                "cc250536.804048"
+            ]
+        ]
+    },
+    {
+        "id": "2beb9467.cbe97c",
+        "type": "twitter out",
+        "z": "850923d8.16d47",
+        "twitter": "3939e2de.c6ebce",
+        "name": "Tweet",
+        "x": 540,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "cc250536.804048",
+        "type": "function",
+        "z": "850923d8.16d47",
+        "name": "",
+        "func": "\nmsg.location = \"Kansas City\"\ntemp_str = \"The temp is: \" + msg.payload \nmsg.payload = temp_str;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 220,
+        "wires": [
+            [
+                "2beb9467.cbe97c"
+            ]
+        ]
+    },
+    {
+        "id": "efe64396.5c6f5",
+        "type": "inject",
+        "z": "850923d8.16d47",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 180,
+        "wires": [
+            [
+                "621f8ac7.fe8a94"
+            ]
+        ]
+    }
+]
